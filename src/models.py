@@ -44,7 +44,7 @@ class Comments(Base):
     comment = Column(String(250))
     userId = Column(Integer, ForeignKey('user.id'))
     userName = Column(Integer, ForeignKey('user.username'))
-    comments = relationship(Notifications)
+    ##comments = relationship(Notifications)
     comments = relationship(Photo)
 
 class Like(Base):
@@ -52,7 +52,7 @@ class Like(Base):
     id = Column(Integer, primary_key=True)
     avatarUrl = Column(String(250), nullable=False)
     userName = Column(Integer, ForeignKey('user.username'))
-    like = relationship(Notifications)
+    ##like = relationship(Notifications)
     like = relationship(Photo)
 
 class Notifications(Base):
@@ -63,7 +63,7 @@ class Notifications(Base):
     comments = relationship(User)
     comments = relationship(Comments)
     comments = relationship(Like)
-    comments = relationship(Followers)
+    ##comments = relationship(Followers)
 
 class Followers(Base):
     __tablename__='followers'
@@ -85,7 +85,7 @@ class Profile(Base):
     id = Column(Integer, primary_key=True)
     userName = Column(String(250), nullable=False)
     userId = Column(Integer, ForeignKey('user.id'))
-    profile = relationship(Post)
+    ##profile = relationship(Post)
     profile = relationship(Photo)
     profile = relationship(User)
 
