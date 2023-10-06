@@ -18,7 +18,7 @@ class User(Base):
     last_name = Column(String(250))
     email = Column(String(250), nullable=False)
     user_bio = Column(String(250))
-    ##privateAccount = Column(bool)
+    privateAccount = Column(Integer)
 
 class Login(Base):
     __tablename__='login'
@@ -34,7 +34,7 @@ class Photo(Base):
     location = Column(String(250))
     postId = Column(String, ForeignKey('post.id'))
     userId = Column(Integer, ForeignKey('user.id'))
-    ##likes = Column(bool)
+    likes = Column(Integer)
     photo = relationship(User)
 
 class Comments(Base):
@@ -44,7 +44,6 @@ class Comments(Base):
     comment = Column(String(250))
     userId = Column(Integer, ForeignKey('user.id'))
     userName = Column(Integer, ForeignKey('user.username'))
-    ##comments = relationship(Notifications)
     comments = relationship(Photo)
 
 class Like(Base):
@@ -52,7 +51,6 @@ class Like(Base):
     id = Column(Integer, primary_key=True)
     avatarUrl = Column(String(250), nullable=False)
     userName = Column(Integer, ForeignKey('user.username'))
-    ##like = relationship(Notifications)
     like = relationship(Photo)
 
 class Notifications(Base):
@@ -63,7 +61,6 @@ class Notifications(Base):
     comments = relationship(User)
     comments = relationship(Comments)
     comments = relationship(Like)
-    ##comments = relationship(Followers)
 
 class Followers(Base):
     __tablename__='followers'
@@ -85,7 +82,6 @@ class Profile(Base):
     id = Column(Integer, primary_key=True)
     userName = Column(String(250), nullable=False)
     userId = Column(Integer, ForeignKey('user.id'))
-    ##profile = relationship(Post)
     profile = relationship(Photo)
     profile = relationship(User)
 
